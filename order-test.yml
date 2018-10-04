@@ -17,3 +17,6 @@ spring:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 env:
   test ok
+girl:
+  name: jerry
+  age: 18
