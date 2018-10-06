@@ -7,7 +7,7 @@ spring:
     password: java
 # 将Jpa生成的sql打印到控制台上.
   jpa:
-show-sql: true
+    show-sql: true
   redis:
-    host: localhsot
+    host: localhost
     port: 6379
