@@ -21,3 +21,16 @@ zuul:
   #    - /myProduct/product/listForOrder
     # 简化之后的版本部分url地址(排除某些路由).
     - /**/product/listForOrder
+ribbon:
+  ReadTimeout: 5000
+  SocketTimeout: 5000
+    
+# 配置zuul调用服务的超时时间(其本质上还是hystrix的调用超时).
+#hystrix:
+#  command:
+#    default:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 5000    
+
