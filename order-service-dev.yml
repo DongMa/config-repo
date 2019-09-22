@@ -6,7 +6,7 @@ eureka:
 spring:
 # 配置整个单体应用在eureka服务上的名称.
   application:
-    name: order
+    name: order-service
 # 配置整个连接数据库连接信息.
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
