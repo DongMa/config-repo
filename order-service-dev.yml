@@ -22,3 +22,5 @@ spring:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 env:
   dev
+server:
+  port: 8085
