@@ -7,7 +7,7 @@ management:
     enabled: false
 # 自定义路由规则,使用myProduct的服务路径来进行product服务的请求.
 zuul:
-  # 全部服务忽略敏感头cookie
+  # 全部服务忽略敏感头,全部服务都可以传递cookie
   sensitiveHeaders:
   routes:
   # myProduct/product/list => product/product/list
