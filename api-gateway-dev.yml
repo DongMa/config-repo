@@ -13,14 +13,14 @@ zuul:
   # myProduct/product/list => product/product/list
     myProduct:
       path: /myProduct/**
-      serviceId: product
+      serviceId: product-service
   # 使得zuul不进行cookie的过滤.
       sensitiveHeaders:
   # 另外一种简洁的写法为
-#    product: /myProduct/**
+#    product-service: /myProduct/**
   # 限制通过服务网关zuul不能进行访问的接口url(在yml文件中配置set类型).
   ignored-patterns:
-  #    - /product/product/listForOrder
+  #    - /product-service/product/listForOrder
   #    - /myProduct/product/listForOrder
     # 简化之后的版本部分url地址(排除某些路由).
     - /**/product/listForOrder    
