@@ -24,3 +24,5 @@ zuul:
   #    - /myProduct/product/listForOrder
     # 简化之后的版本部分url地址(排除某些路由).
     - /**/product/listForOrder    
+server:
+  port: 8080
