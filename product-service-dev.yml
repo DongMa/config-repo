@@ -4,7 +4,7 @@ spring:
     url: jdbc:mysql://localhost:3306/springcloud_sell?characterEncoding=utf-8&useUnicode=true&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: root
+    password: microservice
 # 将Jpa生成的sql打印到控制台上.
   jpa:
     show-sql: true
@@ -12,10 +12,10 @@ spring:
 #server:
 #  servlet:
 #    context-path: /product
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-server:
-  port: 8083
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+#server:
+#  port: 8083
