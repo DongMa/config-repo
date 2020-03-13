@@ -7,7 +7,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/springcloud_sell?characterEncoding=utf-8&useUnicode=true&useSSL=false
     username: root
-    password: root
+    password: microservice
 # 设置spring.data.jpa.show-sql为true,将生成的hql语句打印到控制台上.
   jpa:
     show-sql: true
@@ -17,8 +17,8 @@ spring:
 #    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 env:
   dev
-server:
-  port: 8085
+#server:
+#  port: 8085
 
 # 去除掉hystrix之前的application前缀(在spring cloud RELEASE正式版中不生效).
 #management:
