@@ -12,6 +12,7 @@ spring:
   jpa:
     show-sql: true
     # 对spring Cloud Stream消息进行分组group,当启动多个实例的时候保证只有一个实例消费消息
+  cloud:  
     stream:
       bindings:
         output:
