@@ -4,7 +4,7 @@ spring:
     name: api-gateway
 # 设置api-gateway服务网关启动时占用8080端口
 server:
-  port: 8080
+  port: 8086
 
 # 配置order-service订单服务的route
 zuul:
