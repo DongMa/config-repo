@@ -1,28 +1,77 @@
-ribbon:
-  ReadTimeout: 5000
-  SocketTimeout: 5000
-# 关闭查看所有路由规则的security安全检查.
-management:
-  security:
-    enabled: false
-# 自定义路由规则,使用myProduct的服务路径来进行product服务的请求.
-zuul:
-  # 全部服务忽略敏感头,全部服务都可以传递cookie
-  sensitiveHeaders:
-  routes:
-  # myProduct/product/list => product/product/list
-    myProduct:
-      path: /myProduct/**
-      serviceId: product-service
-  # 使得zuul不进行cookie的过滤.
-      sensitiveHeaders:
-  # 另外一种简洁的写法为
-#    product-service: /myProduct/**
-  # 限制通过服务网关zuul不能进行访问的接口url(在yml文件中配置set类型).
-  ignored-patterns:
-  #    - /product-service/product/listForOrder
-  #    - /myProduct/product/listForOrder
-    # 简化之后的版本部分url地址(排除某些路由).
-    - /**/product/listForOrder    
+# 设置api-gateway服务网关的名称
+spring:
+  application:
+    name: api-gateway
+# 设置api-gateway服务网关启动时占用8080端口
 server:
   port: 8080
+
+# 配置order-service订单服务的route
+zuul:
+  # 通过ignored-services忽略eureka服务id路由的自动映射
+  ignored-services: 'order-service'
+  # 所有已定义的服务都将添加前缀/api
+  #  prefix: /api
+  # 在rest请求到达service之前会移除前缀prefix
+  #  strip-prefix: true
+  routes:
+    order-service: /order/**
+    product-service: /product/**
+    user-service: /user/**
+    # 对eureka-client服务的请求前缀进行配置
+    eureka-client: /client/**
+
+    # 配置OAuth2授权相关服务配置静态资源static resource (web相关)
+    oauth2-service-api:
+      path: /oath2-service/**
+      url: http://localhost:8087
+      stripPrefix: true
+
+  # 默认Zuul不会将敏感头部信息Cookie、Set-Cookie以及Authorization传递给下游服务,在黑名单中
+  # 进行特殊配置(OAuth2需要Authorization)
+  sensitive-headers: Cookie, Set-Cookie
+
+# 对于spring-boot actuator暴露所有endpoints端点, /actuator/routes显示所有route映射
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# 设置所有通过zuul运行的服务设置Hystrix超时时间 (针对特定服务使用service-name替换default)
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 4000
+
+# ribbon:
+#   ReadTimeout: 5000
+#   SocketTimeout: 5000
+# 关闭查看所有路由规则的security安全检查
+# management:
+#   security:
+#     enabled: false
+# 自定义路由规则,使用myProduct的服务路径来进行product服务的请求
+# zuul:
+  # 全部服务忽略敏感头,全部服务都可以传递cookie
+#   sensitiveHeaders:
+#   routes:
+  # myProduct/product/list => product/product/list
+#     myProduct:
+#       path: /myProduct/**
+#       serviceId: product-service
+  # 使得zuul不进行cookie的过滤.
+#       sensitiveHeaders:
+  # 另外一种简洁的写法为
+#    product-service: /myProduct/**
+  # 限制通过服务网关zuul不能进行访问的接口url(在yml文件中配置set类型)
+#   ignored-patterns:
+  #    - /product-service/product/listForOrder
+  #    - /myProduct/product/listForOrder
+    # 简化之后的版本部分url地址(排除某些路由)
+    - /**/product/listForOrder    
+# server:
+#   port: 8080
