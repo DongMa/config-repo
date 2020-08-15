@@ -4,7 +4,7 @@ spring:
     name: product-service
   # 配置数据库驱动连接信息
   datasource:
-    url: jdbc:mysql://192.168.0.101:3306/springcloud_sell?characterEncoding=utf-8&useUnicode=true&useSSL=false
+    url: jdbc:mysql://192.168.0.103:3306/springcloud_sell?characterEncoding=utf-8&useUnicode=true&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
@@ -24,8 +24,8 @@ spring:
       kafka:
         # stream.bindings.kafka属性告诉spring,将使用kafka作为服务中的消息总线
         binder:
-          brokers: 192.168.0.101:9092
-          zk-nodes: 192.168.0.101:2181
+          brokers: 192.168.0.103:9092
+          zk-nodes: 192.168.0.103:2181
 
 # 调整feign中的logging日志的级别为debug
 logging:
