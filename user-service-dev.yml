@@ -1,7 +1,7 @@
 spring:
   # 配置数据库驱动连接信息.
   datasource:
-    url: jdbc:mysql://192.168.0.101:3306/springcloud_sell?characterEncoding=utf-8&useUnicode=true&useSSL=false
+    url: jdbc:mysql://192.168.0.103:3306/springcloud_sell?characterEncoding=utf-8&useUnicode=true&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
@@ -9,13 +9,8 @@ spring:
   jpa:
     show-sql: true
   redis:
-    host: localhost
+    host: 192.168.0.103
     port: 6379
 server:
   port: 8084
   
-# 将商品应用注册到eureka服务上
-eureka:
-  client:
-    service-url:
-      defaultZone: http://192.168.0.101:8762/eureka/  
