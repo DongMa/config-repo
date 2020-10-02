@@ -67,7 +67,7 @@ logging:
     org.springframework.cloud.openfeign: debug
     
 server:
-  port: 8085
+  port: 8089
  
 # 配置ribbon的负载均衡策略(random随机访问,默认为roundrobin轮询发送).
 # product:
